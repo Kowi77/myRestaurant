@@ -23,6 +23,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -60,26 +61,40 @@ public class DishServiceTest {
     }
 
     @Test
-    public void testGet() throws Exception {
-        Dish dish = service.get(1);
-        Assert.assertEquals(dish.getDescription(), DISH_1.getDescription());
-        Assert.assertEquals(dish.getPrice(), DISH_1.getPrice());
-        Assert.assertEquals(dish.getId(), DISH_1.getId());
+    public void testGet() {
+        Assert.assertEquals(service.get(1), DISH_1);
+        Assert.assertNotEquals(service.get(2), DISH_1);
     }
 
-    @Test//
-    public void testGetWithRestaurant() throws Exception {
+    @Test
+    public void testSave() {
+        //test new
+        DISHES[0] = null;
+        DISHES[0] = service.save(DISH_1);
+        Assert.assertEquals(DISHES[0], DISH_1);
+        //test update
+        DISHES[1] = new Dish(2, "Салат Цезарь NEW", 120, RESTAURANT_1);
+        DISHES[1] = service.save(DISH_2);
+        Assert.assertEquals(DISHES[1], DISH_2);
+    }
+
+    @Test
+    public void testGetWithRestaurant() {
         Dish dish = service.getWithRestaurant(1);
-        Assert.assertEquals(dish.getDescription(), DISH_1.getDescription());
-        Assert.assertEquals(dish.getPrice(), DISH_1.getPrice());
-        Assert.assertEquals(dish.getId(), DISH_1.getId());
+        Assert.assertEquals(dish, DISH_1);
+        Assert.assertNotEquals(dish, DISH_2);
         Assert.assertEquals(dish.getRestaurant().getId(), DISH_1.getRestaurant().getId());
         Assert.assertEquals(dish.getRestaurant().getName(), DISH_1.getRestaurant().getName());
     }
 
     @Test
-    public void testGetAll() throws Exception {
-        List<Dish> dishes = service.getAll();
-        Assert.assertArrayEquals(DISHES, dishes.toArray());
+    public void testGetAll() {
+        Assert.assertArrayEquals(DISHES, service.getAll().toArray());
+    }
+
+    @Test
+    public void testIsNew(){
+        Assert.assertFalse(service.isNew(2));
+        Assert.assertTrue(service.isNew(15));
     }
 }

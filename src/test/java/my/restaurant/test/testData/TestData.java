@@ -17,7 +17,7 @@ public class TestData {
     public static final Restaurant RESTAURANT_3 = new Restaurant(3, "Скоморохи");
 
     public static final Dish DISH_1 = new Dish(1, "Пиво", 100, RESTAURANT_1);
-    public static final Dish DISH_2 = new Dish(2, "Салат Цезарь", 120, RESTAURANT_1);
+    public static final Dish DISH_2 = new Dish(2, "Салат Цезарь", 999, RESTAURANT_1);
     public static final Dish DISH_3 = new Dish(3, "Лапша", 140, RESTAURANT_2);
     public static final Dish DISH_4 = new Dish(4, "Шашлык", 160, RESTAURANT_2);
     public static final Dish DISH_5 = new Dish(5, "Плов", 80, RESTAURANT_2);

@@ -21,7 +21,9 @@ public interface DishRepository extends JpaRepository<Dish, Integer> {
     @Override
     public List<Dish> findAll();
 
-    //public List<Dish> save(Dish dish);
+    @Override
+    @Transactional
+    Dish save(Dish dish);
 
     @Override
     public Dish findOne(Integer id);

@@ -13,6 +13,9 @@ public class DishService {
     @Autowired
     DishRepository repository;
 
+    public Dish save(Dish dish){
+        return repository.save(dish);
+    }
 
     public Dish get(int id) {
         Dish dish = repository.findOne(id);
@@ -26,5 +29,9 @@ public class DishService {
 
     public List<Dish> getAll(){
         return repository.findAll();
+    }
+
+    public boolean isNew(int id){
+        return !repository.exists(id);
     }
 }

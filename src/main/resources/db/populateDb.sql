@@ -9,7 +9,7 @@ INSERT INTO restaurants (name) VALUES
 
 INSERT INTO dishes (description, price, restId) VALUES
   ('Пиво', '100', '1'),
-  ('Салат Цезарь', '120', '1'),
+  ('Салат Цезарь', '999', '1'),
   ('Лапша', '140', '2'),
   ('Шашлык', '160', '2'),
   ('Плов', '80', '2'),
