@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class Dish {
 
     @Id
-    @Column(name = "dishId")
+    @Column(name = "Id")
     @GeneratedValue
    // @NotNull
     private Integer id;

@@ -10,7 +10,7 @@ import java.util.List;
 public class Restaurant {
 
     @Id
-    @Column(name = "restId")
+    @Column(name = "Id")
     @GeneratedValue
     //@NotNull
     private Integer id;

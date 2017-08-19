@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class User extends AbstractUser {
 
     @Id
-    @Column(name = "userId")
+    @Column(name = "Id")
     @GeneratedValue
     //@NotNull
     private Integer id;

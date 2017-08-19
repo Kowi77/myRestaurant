@@ -33,7 +33,7 @@ import static my.restaurant.test.testData.TestData.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestDataBaseConfig.class)
 @WebAppConfiguration
-//@Sql(scripts = "classpath:db/populateDb.sql", config = @SqlConfig(encoding = "UTF-8"))
+@Sql(scripts = {"classpath:db/initDb.sql", "classpath:db/populateDb.sql"}, config = @SqlConfig(encoding = "UTF-8"))
 
 public class DishServiceTest {
 
