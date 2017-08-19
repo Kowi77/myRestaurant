@@ -5,6 +5,8 @@ import my.restaurant.repository.DishRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DishService {
 
@@ -14,6 +16,15 @@ public class DishService {
 
     public Dish get(int id) {
         Dish dish = repository.findOne(id);
-        return dish;//meal != null && meal.getUser().getId() == userId ? meal : null;
+        return dish;
+    }
+
+    public Dish getWithRestaurant(int id){
+        Dish dish = repository.findWithRestaurant(id);
+        return dish;
+    }
+
+    public List<Dish> getAll(){
+        return repository.findAll();
     }
 }

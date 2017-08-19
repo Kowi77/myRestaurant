@@ -3,6 +3,8 @@ package my.restaurant.entity;
 
 //import javax.validation.constraints.NotNull;
 
+import org.hibernate.Hibernate;
+
 import javax.persistence.*;
 
 @Entity
@@ -30,6 +32,13 @@ public class Dish {
     public Dish( String description, int price, Restaurant restaurant) {
         this.description = description;
         this.price = price;
+        this.restaurant = restaurant;
+    }
+
+    public Dish(int id, String description, int price, Restaurant restaurant) {
+        this.id = id;
+        this.price = price;
+        this.description = description;
         this.restaurant = restaurant;
     }
 
@@ -66,6 +75,23 @@ public class Dish {
 
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || !getClass().equals(Hibernate.getClass(o))) {
+            return false;
+        }
+        Dish dish = (Dish) o;
+        return getId() != null && getId().equals(dish.getId()) && getDescription().equals(dish.getDescription()) && getPrice() == dish.getPrice();
+    }
+
+    @Override
+    public int hashCode() {
+        return (getId() == null) ? 0 : getId();
     }
 
     @Override

@@ -1,0 +1,29 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="DishServiceTest.testGetDish" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+    <log_file path="$PROJECT_DIR$" checked="true" skipped="true" show_all="false" alias="logging.txt" />
+    <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+      <pattern>
+        <option name="PATTERN" value="my.restaurant.test.service.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <module name="myRestaurant" />
+    <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <option name="PACKAGE_NAME" value="my.restaurant.test.service" />
+    <option name="MAIN_CLASS_NAME" value="my.restaurant.test.service.DishServiceTest" />
+    <option name="METHOD_NAME" value="testGetDish" />
+    <option name="TEST_OBJECT" value="method" />
+    <option name="VM_PARAMETERS" value="-ea" />
+    <option name="PARAMETERS" value="" />
+    <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
+    <option name="ENV_VARIABLES" />
+    <option name="PASS_PARENT_ENVS" value="true" />
+    <option name="TEST_SEARCH_SCOPE">
+      <value defaultName="singleModule" />
+    </option>
+    <envs />
+    <patterns />
+    <method />
+  </configuration>
+</component>

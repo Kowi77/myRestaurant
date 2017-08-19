@@ -22,9 +22,10 @@ public class User extends AbstractUser {
     @JoinColumn(name = "restId")
     private Restaurant restaurant;
 
-    public User(Integer id, String name) {
+    public User(Integer id, String name, Restaurant restaurant) {
         this.id = id;
         this.name = name;
+        this.restaurant = restaurant;
     }
 
     public User() {
