@@ -2,7 +2,9 @@ package my.restaurant.test.service;
 
 import my.restaurant.config.DataConfig;
 import my.restaurant.entity.Dish;
+import my.restaurant.entity.User;
 import my.restaurant.service.DishService;
+import my.restaurant.service.UserService;
 import my.restaurant.test.config.TestDataBaseConfig;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -35,7 +37,7 @@ import static my.restaurant.test.testData.TestData.*;
 @WebAppConfiguration
 @Sql(scripts = {"classpath:db/initDb.sql", "classpath:db/populateDb.sql"}, config = @SqlConfig(encoding = "UTF-8"))
 
-public class DishServiceTest {
+public class UserServiceTest {
 
     static final Logger log = LogManager.getLogger(DishServiceTest.class);
 
@@ -53,7 +55,7 @@ public class DishServiceTest {
     protected EntityManager em;
 
     @Autowired
-    private DishService service;
+    private UserService service;
 
     @Before
     public void setUp() throws Exception {
@@ -62,20 +64,20 @@ public class DishServiceTest {
 
     @Test
     public void testGet() {
-        Assert.assertEquals(service.get(1), DISH_1);
-        Assert.assertNotEquals(service.get(2), DISH_1);
+        Assert.assertEquals(service.get(1), USER_1);
+        Assert.assertNotEquals(service.get(2), USER_1);
     }
 
     @Test
     public void testSave() {
         //test new
-        DISHES[0] = null;
-        DISHES[0] = service.save(DISH_1);
-        Assert.assertEquals(DISHES[0], DISH_1);
+        USERS[0] = null;
+        USERS[0] = service.save(USER_1);
+        Assert.assertEquals(USERS[0], USER_1);
         //test update
-        DISHES[1] = new Dish(2, "Салат Цезарь NEW", 120, RESTAURANT_1);
-        DISHES[1] = service.save(DISH_2);
-        Assert.assertEquals(DISHES[1], DISH_2);
+        USERS[2] = new User(3, "Риберишка", RESTAURANT_3);
+        USERS[2] = service.save(USER_3);
+        Assert.assertEquals(USERS[2], USER_3);
     }
 
     @Test
@@ -86,15 +88,15 @@ public class DishServiceTest {
 
     @Test
     public void testGetWithRestaurant() {
-        Dish dish = service.getWithRestaurant(1);
-        Assert.assertEquals(dish, DISH_1);
-        Assert.assertNotEquals(dish, DISH_2);
-        Assert.assertEquals(dish.getRestaurant(), DISH_1.getRestaurant());
+        User user = service.getWithRestaurant(1);
+        Assert.assertEquals(user, USER_1);
+        Assert.assertNotEquals(user, USER_2);
+        Assert.assertEquals(user.getRestaurant(), USER_1.getRestaurant());
     }
 
     @Test
     public void testGetAll() {
-        Assert.assertArrayEquals(DISHES, service.getAll().toArray());
+        Assert.assertArrayEquals(USERS, service.getAll().toArray());
     }
 
     @Test

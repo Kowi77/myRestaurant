@@ -27,6 +27,10 @@ public class DishService {
         return dish;
     }
 
+    public void delete(int id){
+        repository.delete(id);
+    }
+
     public List<Dish> getAll(){
         return repository.findAll();
     }

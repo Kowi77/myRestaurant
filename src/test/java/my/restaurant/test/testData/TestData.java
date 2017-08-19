@@ -30,8 +30,8 @@ public class TestData {
     public static final User USER_2 = new User(2, "Юля", RESTAURANT_2);
     public static final User USER_3 = new User(3, "Златан", RESTAURANT_3);
 
-    public static final List<Restaurant> RESTAURANTS = Arrays.asList(RESTAURANT_1, RESTAURANT_2, RESTAURANT_3);
+    public static final Restaurant[] RESTAURANTS = {RESTAURANT_1, RESTAURANT_2, RESTAURANT_3};
     public static final Dish [] DISHES = {DISH_1, DISH_2, DISH_3, DISH_4, DISH_5, DISH_6, DISH_7, DISH_8, DISH_9};
-    public static final List<User> USERS = Arrays.asList(USER_1, USER_2, USER_3);
+    public static final User[] USERS = {USER_1, USER_2, USER_3};
 
 }

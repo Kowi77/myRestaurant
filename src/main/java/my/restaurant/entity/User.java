@@ -2,6 +2,8 @@ package my.restaurant.entity;
 
 //import javax.validation.constraints.NotNull;
 
+import org.hibernate.Hibernate;
+
 import javax.persistence.*;
 
 @Entity
@@ -45,6 +47,31 @@ public class User extends AbstractUser {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || !getClass().equals(Hibernate.getClass(o))) {
+            return false;
+        }
+        User user = (User) o;
+        return getId() != null && getId().equals(user.getId()) && getName().equals(user.getName());// && getRestaurant().equals(user.getRestaurant());
+    }
+
+    @Override
+    public int hashCode() {
+        return (getId() == null) ? 0 : getId();
     }
 
     @Override

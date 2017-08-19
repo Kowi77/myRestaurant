@@ -2,6 +2,8 @@ package my.restaurant.entity;
 
 //import javax.validation.constraints.NotNull;
 
+import org.hibernate.Hibernate;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -19,11 +21,11 @@ public class Restaurant {
     //@NotNull
     private String name;
 
-    /*@OneToMany(mappedBy = "dishes", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "restaurant", fetch = FetchType.LAZY)
     private List<Dish> dishesForLunch;
 
-    @OneToMany(mappedBy = "users", fetch = FetchType.LAZY)
-    private List<User> votedUsers;*/
+    @OneToMany(mappedBy = "restaurant", fetch = FetchType.LAZY)
+    private List<User> votedUsers;
 
     public Restaurant(String name) {
         this.name = name;
@@ -33,8 +35,6 @@ public class Restaurant {
         this.id = id;
         this.name = name;
     }
-
-
 
     public Restaurant() {
     }
@@ -53,6 +53,43 @@ public class Restaurant {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public List<Dish> getDishesForLunch() {
+        return dishesForLunch;
+    }
+
+    public void setDishesForLunch(List<Dish> dishesForLunch) {
+        this.dishesForLunch = dishesForLunch;
+    }
+
+    public List<User> getVotedUsers() {
+        return votedUsers;
+    }
+
+    public void setVotedUsers(List<User> votedUsers) {
+        this.votedUsers = votedUsers;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || !getClass().equals(Hibernate.getClass(o))) {
+            return false;
+        }
+        Restaurant restaurant = (Restaurant) o;
+        return getId() != null && getId().equals(restaurant.getId()) && getName().equals(restaurant.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return (getId() == null) ? 0 : getId();
     }
 
     @Override

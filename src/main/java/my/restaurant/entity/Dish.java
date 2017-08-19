@@ -87,6 +87,7 @@ public class Dish {
         }
         Dish dish = (Dish) o;
         return getId() != null && getId().equals(dish.getId()) && getDescription().equals(dish.getDescription()) && getPrice() == dish.getPrice();
+                //&& getRestaurant().equals(dish.getRestaurant());
     }
 
     @Override
