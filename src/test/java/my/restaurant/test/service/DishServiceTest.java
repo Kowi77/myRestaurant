@@ -67,7 +67,7 @@ public class DishServiceTest {
         Assert.assertEquals(dish.getId(), DISH_1.getId());
     }
 
-    @Test
+    @Test//
     public void testGetWithRestaurant() throws Exception {
         Dish dish = service.getWithRestaurant(1);
         Assert.assertEquals(dish.getDescription(), DISH_1.getDescription());
